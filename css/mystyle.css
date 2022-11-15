@@ -1,0 +1,117 @@
+/*
+Name: Anthony Lawlor
+Contact: AnthonyMichaelLawlor@gmail.com
+*/
+
+button{
+text-transform: capitalize;
+font-size: 20px;
+
+}
+
+
+/*changes color of tabs text to blue*/
+#tabs .ui-tabs-anchor{
+  color:  #0275d8;
+}
+
+/*changes color of tabs background text to gray*/
+#tabs ul{
+  background:slategray;
+  margin-bottom: 10px;
+}
+
+.ui-slider{
+  width: auto;
+}
+
+.ui-slider .ui-slider-handle {
+  min-width: 20px;
+  min-height: 25px;
+  height: auto;
+  width: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  color:  #0275d8;
+}
+
+
+h1{
+  font-weight: bold;
+}
+
+p{
+  text-transform: capitalize;
+  text-align: center;
+}
+
+/*Changing default settings of jQuerry validators error box's*/
+label.error{
+  margin: 5px;
+  color: darkred;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: bold;
+  white-space: pre-wrap;
+}
+
+/*Styling the form and adding rounded borders*/
+form{
+  font-weight: bold;
+  background:slategray;
+  padding: 10px;
+  border-radius: 11px;;
+  margin-bottom: 20px;
+}
+
+tr{
+border: 3px solid black;
+}
+
+/*Giving the first column and row a grey background to differentiate from the rest of the cells in the table*/ 
+th{     
+  /*position: sticky; top: 0px;
+  position: sticky; left: -3px;  Code used to make it so the first row and column stay in a fixed position while you move the the scroll heads*/
+  color: black;
+  border: 3px solid black;
+  padding: 10px;
+  background:slategray
+}
+
+/*Setting the even column values to be light blue and gives them a thin black border*/
+tr td:nth-child(even){
+  background-color: lightblue;
+  border: 3px solid black;
+}
+
+/*Setting the odd column values to be light blue and gives them a thin black border*/
+tr td:nth-child(odd){
+  background-color: #0275d8;
+  border: 3px solid black;
+}
+
+
+
+/*Modify table-responsive bootstrap class to always show scroll bars and have a fixed size
+https://stackoverflow.com/questions/25777374/always-show-scrollbar-in-bootstrap-table-responsive*/
+
+.table-responsive {
+  overflow: auto;
+  max-width: 550px;
+  max-height: 550px;
+}
+
+/*Make the scrollbar always visibile 
+https://stackoverflow.com/questions/1202425/making-the-main-scrollbar-always-visible*/
+  .table-responsive::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+/*Change the scrollbar head(piece you move) color to darkgray, makes it rounded, and gives it a border so it is not touching the table directly.
+https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-scrollbar*/
+  .table-responsive::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  border: 2px solid #d5d5d5;
+  border-radius: 20px;
+}
+

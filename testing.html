@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Tabs - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+    $(".ui-closable-tab").live( "click", function() {
+        var tabContainerDiv=$(this).closest(".ui-tabs").attr("id");
+        var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+        $( "#" + panelId ).remove();
+        $("#"+tabContainerDiv).tabs("refresh");
+        var tabCount=$("#"+tabContainerDiv).find(".ui-closable-tab").length;
+        if (tabCount<1) {
+            $("#"+tabContainerDiv).hide();
+        }
+    });
+  });
+  </script>
+  <style>
+  .ui-icon-circle-close {
+    cursor:pointer;
+  }
+  </style>
+</head>
+<body>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Nunc tincidunt</a><span class='ui-icon ui-icon-circle-close ui-closable-tab'></span></li>
+    <li><a href="#tabs-2">Proin dolor</a><span class='ui-icon ui-icon-circle-close ui-closable-tab'></span></li>
+    <li><a href="#tabs-3">Aenean lacinia</a><span class='ui-icon ui-icon-circle-close ui-closable-tab'></span></li>
+  </ul>
+  <div id="tabs-1">
+    <p>Tab 1 Content</p>
+  </div>
+  <div id="tabs-2">
+    <p>Tab 2 Content</p>
+  </div>
+  <div id="tabs-3">
+    <p>Tab 3 Content</p>
+  </div>
+</div>
+</body>
+</html>
