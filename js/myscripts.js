@@ -181,11 +181,11 @@ $(document).ready(function(){
   //Submit function button for jQuerry to check if the form is valid, sets up variables using jQuerry and runs it thought table generate function
   $('#submitButton').click(function(){
     if ($('#inputForm').valid()){ 
-      var multiplierMin = $('#multiplierMinimum').val();
-      var multiplierMax = $('#multiplierMaximum').val();
-      var multiplicandMin = $('#multiplicandMinimum').val();
-      var multiplicandMax = $('#multiplicandMaximum').val();
-
+      var multiplierMin = parseInt($('#multiplierMinimum').val());
+      var multiplierMax = parseInt($('#multiplierMaximum').val());
+      var multiplicandMin = parseInt($('#multiplicandMinimum').val());
+      var multiplicandMax = parseInt($('#multiplicandMaximum').val());
+      
        /*Create empty table variable and initialize first cell to have the * symbol
          Source: https://www.w3schools.com/html/html_tables.asp*/
       var table = "<thead> <tr> <th>" + "*" + "</th>";
