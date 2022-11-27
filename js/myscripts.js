@@ -9,6 +9,7 @@ $(document).ready(function(){
   //Sets up variables for tab counter that generates the current name of tabs, tabCounterBackground keeps track of selecting the newest active tab.
   var tabCounter = 1;
   var tabCounterBackground = 1;
+
  
 //Function to check if a numbered entered has any decimal place
 //Source: https://stackoverflow.com/questions/241145/jquery-validate-plugin-how-to-create-a-simple-custom-rule
@@ -127,6 +128,7 @@ $(document).ready(function(){
         value: 0,
         change: function( event, ui) {
           $( "#slider-multiplierMinimum" ).find( ".ui-slider-handle" ).text(ui.value);
+          $.submit();
         },
         slide: function( event, ui ) {
           $( "#multiplierMinimum" ).val( ui.value );
@@ -141,11 +143,11 @@ $(document).ready(function(){
         max: 200,
         change: function( event, ui) {
           $( "#slider-multiplierMaximum" ).find( ".ui-slider-handle" ).text(ui.value);
+          $.submit();
         },
         slide: function( event, ui ) {
           $( "#multiplierMaximum" ).val( ui.value );
           $( "#slider-multiplierMaximum" ).find( ".ui-slider-handle" ).text(ui.value);
-
         }
     }),
 
@@ -155,6 +157,7 @@ $(document).ready(function(){
         max: 200,
         change: function( event, ui) {
           $( "#slider-multiplicandMinimum" ).find( ".ui-slider-handle" ).text(ui.value);
+          $.submit();
         },
         slide: function( event, ui ) {
           $( "#multiplicandMinimum" ).val( ui.value );
@@ -168,6 +171,7 @@ $(document).ready(function(){
         max: 200,
         change: function( event, ui) {
           $( "#slider-multiplicandMaximum" ).find( ".ui-slider-handle" ).text(ui.value);
+          $.submit();
         },
         slide: function( event, ui ) {
           $( "#multiplicandMaximum" ).val( ui.value );
@@ -178,8 +182,8 @@ $(document).ready(function(){
 
 
 
-  //Submit function button for jQuerry to check if the form is valid, sets up variables using jQuerry and runs it thought table generate function
-  $('#submitButton').click(function(){
+  //jQuerry to check if the form is valid, sets up variables using jQuerry and runs it thought table generate function
+$.submit = function() {
     if ($('#inputForm').valid()){ 
       var multiplierMin = parseInt($('#multiplierMinimum').val());
       var multiplierMax = parseInt($('#multiplierMaximum').val());
@@ -210,7 +214,7 @@ $(document).ready(function(){
       //Set the table element in the HTML to be equal to variable table to be displayed.
       $('#tableDisplay').html(table);
     } 
-  });  
+  };  
 
 
     //Defines the functions for creating tabs using a template for the list object and then appends the tableDisplay object too the tab only if a table has been generated
@@ -222,8 +226,14 @@ $(document).ready(function(){
 
         //When save button is clicked it firsts generates the list object and appends it with a new href object with the name of the currents tab
         $( "#saveButton" ).button().on( "click", function() { 
+          if ($('#inputForm').valid()){ 
+            var multiplierMin = parseInt($('#multiplierMinimum').val());
+            var multiplierMax = parseInt($('#multiplierMaximum').val());
+            var multiplicandMin = parseInt($('#multiplicandMinimum').val());
+            var multiplicandMax = parseInt($('#multiplicandMaximum').val());
+          }
           if($('#tableDisplay').html() != ''){
-            var label = "Tab " + tabCounter;
+            var label = "COLUMN Min: " + multiplierMin + " Max: " + multiplierMax + " | ROW Min: " + multiplicandMin + " Max: " + multiplicandMax;
             var id = "tabs-" + tabCounter;
             var li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) );
             var tabContent = $('#tableDisplay').html();
@@ -240,6 +250,7 @@ $(document).ready(function(){
             tabCounterBackground ++
           }
         });
+
      
           
         
